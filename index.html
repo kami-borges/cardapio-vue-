@@ -19,14 +19,14 @@
         <div class="container justify-content-center">
          <span class="navbar-brand mb-0 h1"> 
                 <!-- margin-bottom-->
-            Encomende seu bolo
+            Monte seu lanche
         </span>
         </div>
     </nav>
 
   <div class="container">
 
-     <div class="app">
+     <div id="app">
 
       <div class="row">
 
@@ -38,24 +38,54 @@
                     <!-- Propriedade Computada--> 
                     <img src="" alt="">
 
-                      <img :src="">
-                      <img src="">
-                      <img :src="">
-                      <img :src="">
-                      <img src="">
-                      <img :src="">
-                      <img :src="">
+                      <img :src="pao[0]">
+                      <img src="alface">
+                      <img :src="ketchup">
+                      <img :src="mostarda">
+                      <img src="maionese">
+                      <img :src="Burger">
+                      <img :src="pao[1]">
 
                 </div> <!-- col -->
-
-
-
               </div>
           </div>
 
           <!-- Seleção de produtos -->      
-        <div class="col-md-6">
-        
+        <div class="col-md-6" v-if="etapa == 1">
+                    
+          <!-- TIPO do pão --> 
+           <div class="row mt-2">
+             <div class="col">
+
+              <div class="card">      
+              <div class="card-header">
+                Tipo de Pão
+              </div>
+            </div>
+
+            <div class="card-body">
+  
+            <div class="form-check form-check-inline">
+
+              <input type="radio" class="form-check-input">
+
+              <label class="form-check-label"> Gergelim </label>
+            
+
+            </div>
+
+
+             
+             
+
+            </div>
+
+
+             </div>
+
+           </div>
+
+
         </div>
 
        </div> <!-- Fim ROW-->
@@ -66,7 +96,15 @@
 
    <!--  instancia VUE -->
      <script>
-      
+       // const = constante
+       // vm = view (html) Model (js)
+          const vm = new Vue ( {
+              el: '#app',
+          })
+
+
+
+
      </script>
    
     </body>
