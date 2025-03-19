@@ -148,17 +148,79 @@
                     </div>
                     <!-- Fim Molhos -->
 
-                    
+                    <!-- Tipos Hamburguer -->
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card"> 
 
+                                <div class="card-header">
+                                    Tipo de Burger
+                                </div>
 
-                                                      
-                    
-                    
+                                <div class="card-body">
 
-                </div> <!-- Fim Etapa 1 -->
-                <!-- Fim col md -->
+                                    <!-- Bovino -->
+                                    <div class="form-check form-check-inline">
 
-                                
+                                        <input type="radio" value="bovino" v-model="inputBurger">
+
+                                        <label class="form-check-label"> Bovina </label>
+                                        
+                                    </div>
+
+                                    <!-- Frango -->
+                                    <div class="form-check form-check-inline">
+                                        
+                                        <input type="radio" value="frango" v-model="inputBurger">
+
+                                        <label class="form-check-label"> Frango </label>
+
+                                    </div>
+
+                                    <!-- Vegetal -->
+                                    <div class="form-check form-check-inline">
+
+                                        <input type="radio" value="vegetal" v-model="inputBurger">
+
+                                        <label class="form-check-label"> Vegetal </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <!-- Fim Burger -->
+
+                    <!-- Fazer o Pedido -->
+                    <div class="row mt-2">
+                        
+                        <div class="col d-flex justify-content-end">
+                            
+                            <button class="btn btn-primary" type="button" @click="fazerPedido()">
+                                Fazer o Pedido
+                            </button>
+                        </div>
+                    </div>
+                
+                </div> <!-- Fim Etapa 1 // Fim col md -->
+
+                <div class="col-md-6" v-if="etapa == 2"> 
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+    
+                                Informe os seus Dados
+
+                                Nome
+
+                                Mesa
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div> <!-- fim ROW -->
         </div> <!-- FIM APP -->
@@ -173,7 +235,7 @@
                 inputTipoPao: '',  /* radio = Obrigatorio */ 
                 inputSalada: [], /* checkbox = opcional */
                 inputMolhos: [],
-                
+                inputBurger: '',
                 etapa: 1,
                 
 
@@ -223,22 +285,48 @@
                 
                 },
 
-              maionese () {
+                maionese () {
+                    
+                    if (this.inputMolhos.includes('maionese')) {
+                        return 'imagens/maionese.png'
+                    }
 
-                if (this.inputMolhos.includes('maionese')) {
-                  return 'imagens/maionese.png'
-                }
-              
-                return 'imagens/padrao/molho.png'
-              }
+                    return 'imagens/padrao/molho.png'
+                
+                },
 
-
-
-
+                burger () {
+                    switch(this.inputBurger) {
+                        case 'bovino':
+                            return 'imagens/bovino.png'
+                        
+                        case 'frango':
+                            return 'imagens/frango.png'
+                        
+                        case 'vegetal':
+                            return 'imagens/soja.png'
+                        
+                        default:
+                            return 'imagens/padrao/hamburguer.png'
+                    }
+                }, 
                 
             },
+                     
+            methods: {
+                fazerPedido() {
+                    //se Pão e Carne forem selecionados 
+                    if(this.inputTipoPao && this.inputBurger) {
+                        this.etapa = 2 
+                        // avança para etapa 2 
+                    }
+                      else {
+                        alert('Voce precisa selecionar no minimo um pão e uma carne')
+                    }
+                }
+            }
             
-            
+
         })
     </script>
 
